@@ -1,0 +1,63 @@
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Nunito', sans-serif;
+}
+
+html, body {
+    background-color: #181446 !important;
+}
+.topbar{
+    display: flex;
+    width: 100%;
+    height: 10vh;
+    background: orange;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+}
+.topbar img{
+    width:200px;
+}
+
+.mainholder{
+
+    background: rgba(255, 255, 255, 0.1);
+
+
+}
+
+.container h1 {
+    margin: 0.5em auto;
+    color: #FFF;
+    text-align: center;
+}
+
+.contacts-list{
+    background: #181446;
+    color:white;
+}
+.own-info{
+    background: orange;
+}
+.chat_box {
+    position: relative;
+    background: #e7e7e7;
+    height: auto;
+    width: 65%;
+    border-radius: 5px;
+    margin: 2em 1em;
+    overflow: auto;
+}
+
+.messagebox{
+    position: absolute;
+    bottom: 0;
+}
+.toolbar{
+    background: orange;
+}
+.toolbar button{
+
+}

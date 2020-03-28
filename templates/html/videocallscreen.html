@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Video Call</title>
+    <link rel="stylesheet" href="video.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <script src="jquery-3.4.1.slim.min.js"
+            integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+            crossorigin="anonymous"></script>
+</head>
+<body onresize="checkwidth()">
+<div class="topbar">
+    <img src="images/logo.png" alt="">
+</div>
+
+<div  class="container">
+    <button onclick="addcol()" id="addcol">add caller</button>
+    <div id="row" class="row">
+        <div class="col">
+            <video class="video"src=""></video>
+            <span>caller 1</span>
+        </div>
+        <div class="col">
+            <video class="video" src=""></video>
+            <span>caller 2</span>
+        </div>
+        <div class="col">
+            <video class="video"src=""></video>
+            <span>caller 3</span>
+        </div>
+        <div class="col">
+            <video  class="video" src=""></video>
+            <span>caller 4</span>
+        </div>
+        <div class="col">
+            <video class="video" src=""></video>
+            <span>yourself</span>
+        </div>
+    </div>
+
+</div>
+</div>
+<script>
+    var videoWidth = 200; // default video width;
+    var container_div = document.getElementById('row'); // will be used later to count the number of columns in a row
+    function disableadd(){
+        //disable function for the add caller button
+        var countcol = container_div.getElementsByTagName('div').length; // checks how many video screens there are
+        if (countcol ==20) {
+            //disables the add button whenever we reach 20 videos in a screen.
+            var addcol = document.getElementById('addcol');
+            addcol.setAttribute("disabled", false);
+        }
+        else {
+            console.log(countcol);
+        }
+    }
+    function animationBarOne(){
+        //this function changes the width of each video element with the class video
+        var elements = document.getElementsByClassName("video");
+        for (var i = 0; i < elements.length; i++) {
+            elements[i].style.width=(videoWidth+"px");
+        }
+        disableadd();
+    }
+    function checkwidth() {
+        var countcol = container_div.getElementsByTagName('div').length; // checks how many video screens there are
+        //this function checks for the actual width of the viewing screen and changes the videoWidth value according to the screen
+        if (window.innerWidth >= 992 && countcol <= 6) {
+            videoWidth = 200;
+            animationBarOne();
+        }
+        else if (window.innerWidth >= 992 && countcol > 6 && countcol <= 12 ) {
+            videoWidth = 150;
+            animationBarOne();
+        }
+        else if (window.innerWidth >= 992 && countcol > 12) {
+            videoWidth = 100;
+            animationBarOne();
+        }
+        else if (window.innerWidth >= 768 && countcol <= 6 ) {
+            videoWidth = 150;
+            animationBarOne();
+        }
+        else if (window.innerWidth >= 768 && countcol > 6 && countcol <= 12) {
+            videoWidth = 100;
+            animationBarOne();
+        }
+        else if (window.innerWidth >= 768 && countcol > 12) {
+            videoWidth = 85;
+            animationBarOne();
+        }
+        else if (window.innerWidth >= 320 && countcol <= 6){
+            videoWidth = 100;
+            animationBarOne();
+        }
+        else if (window.innerWidth >= 320 && countcol > 6){
+            videoWidth = 75;
+            animationBarOne();
+        }
+        else {
+            videoWidth = 87;
+            animationBarOne();
+        }
+    }
+    checkwidth();
+
+    function addcol() {
+        //this is a test function to add new columns with videos and a span inside to test the other working of the other functions
+        var newdiv = document.createElement('div');
+        newdiv.setAttribute('class', 'col');
+        var newvideo = document.createElement('video');
+        newvideo.setAttribute('class','video');
+        newvideo.setAttribute('width',videoWidth);
+        var span = document.createElement('span');
+        span.innerHTML="new";
+        newdiv.appendChild(newvideo);
+        newdiv.appendChild(span);
+        document.getElementById("row").appendChild(newdiv);
+        checkwidth();
+
+    }
+</script>
+</body>
+</html>
