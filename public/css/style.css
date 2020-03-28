@@ -1,0 +1,10 @@
+body .second-bar {
+  color: #181446 !important;
+  justify-content: space-between;
+  width: 100%;
+}
+body main .background-top img {
+  max-height: 300px;
+}
+
+/*# sourceMappingURL=style.css.map */
